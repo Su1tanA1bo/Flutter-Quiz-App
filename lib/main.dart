@@ -9,6 +9,29 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  var questions = [
+    {
+        "QuestionText":"What is the capital city of Australia?",
+        "answers": ["Canberra", "Sydney", "Melbourne", "Jakarta"],
+    },
+    {
+        "QuestionText":"What is the largest country in the world by land mass?",
+        "answers": ["Canada", "China", "Russia", "United States of America"],
+    },
+    {
+        "QuestionText":"Which car manufacturer below originated in Germany?",
+        "answers": ["Mercedes-Benz", "Volvo", "Nissan", "Dodge"],
+    },
+    {
+        "QuestionText":"Which of the countries listed below, belong to the continent Oceania",
+        "answers": ["Indonesia", "India", "New Zealand", "Mauritius"],
+    },
+    {
+        "QuestionText":"Where is Mount Vesuvius located?",
+        "answers": ["Tibet", "Italy", "Greece", "Japan"],
+    }
+    ];
+
   var _questionIndex = 0;
 
   void _answerQuestion()
@@ -17,14 +40,14 @@ class _MyAppState extends State<MyApp> {
       _questionIndex = _questionIndex + 1;
     });
     print(_questionIndex);
+    if(_questionIndex < questions.length)
+    {
+        
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      "What's your favourite colour?",
-      "What's your favourite animal?",
-    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -32,10 +55,14 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Question(questions[_questionIndex]),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion)
+            Question(
+              questions[_questionIndex]['QuestionText'] as String
+            ),
+
+            ...(questions[_questionIndex]['answers'] as List<String>).map((answer)
+            {
+               return Answer(_answerQuestion, answer);
+            }).toList()
           ],
         ),
       ),
