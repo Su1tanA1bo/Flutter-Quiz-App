@@ -17,11 +17,23 @@ class Result extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          Text(
-            resultPhrase,
-            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-            ),
-            ElevatedButton(onPressed: resetHandler, child: Text("Restart Quiz"))
+          Container(
+            margin: EdgeInsets.all(50),
+            child: Text(
+              resultPhrase, 
+              style: TextStyle(fontSize: 36, color: Colors.white),
+              ),
+          ),
+            OutlinedButton(
+              onPressed: resetHandler,
+              child: Text("Restart Quiz", style: TextStyle(color: Colors.white),),
+              style: OutlinedButton.styleFrom(
+              side: BorderSide(
+                width: 1.0,
+                color: Colors.white),
+                
+              ),
+            )
         ],
       )
     );

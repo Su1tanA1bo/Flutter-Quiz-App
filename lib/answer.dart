@@ -9,10 +9,14 @@ class Answer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      child: ElevatedButton(
-        child: Text(answerText),
+      width: 250,//double.infinity,
+      child: OutlinedButton(
+        child: Text(answerText, style: TextStyle(color: Colors.white),),
         onPressed: inputFunction,
+        style: OutlinedButton.styleFrom(
+            side: BorderSide(
+              width: 1.0,
+              color: Colors.white),),
       ),
     );
   }
