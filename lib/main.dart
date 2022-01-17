@@ -17,9 +17,9 @@ class _MyAppState extends State<MyApp> {
     {
         "QuestionText":"What is the capital city of Australia?",
         "answers":
-         [{'text':"Canberra", 'score': 0}, 
+         [{'text':"Canberra", 'score': 1}, 
         {'text':"Sydney", 'score': 0},
-        {'text':"Melbourne", 'score': 1},
+        {'text':"Melbourne", 'score': 0},
         {'text':"Jakarta", 'score': 0}],
     },
     {
