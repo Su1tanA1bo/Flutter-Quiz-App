@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/quiz.dart';
 import './answer.dart';
 import 'package:quiz_app/question.dart';
+import 'quiz.dart';
 
 void main() => runApp(MyApp());
 class MyApp extends StatefulWidget {
@@ -9,7 +11,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var questions = [
+  final _questions = [
     {
         "QuestionText":"What is the capital city of Australia?",
         "answers": ["Canberra", "Sydney", "Melbourne", "Jakarta"],
@@ -49,18 +51,8 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('Quiz app'),
         ),
-        body: _questionIndex < questions.length? Column(
-          children: [
-            Question(
-              questions[_questionIndex]['QuestionText'] as String
-            ),
-
-            ...(questions[_questionIndex]['answers'] as List<String>).map((answer)
-            {
-               return Answer(_answerQuestion, answer);
-            }).toList()
-          ],
-        ) : Center(child: Text('You did it!'),),
+        body: _questionIndex < _questions.length? Quiz(answerQuestion: _answerQuestion, questionIndex: _questionIndex, questions: _questions,)
+         : Center(child: Text('You did it!'),),
       ),
     );
   }
