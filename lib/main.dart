@@ -40,10 +40,6 @@ class _MyAppState extends State<MyApp> {
       _questionIndex = _questionIndex + 1;
     });
     print(_questionIndex);
-    if(_questionIndex < questions.length)
-    {
-        
-    }
   }
 
   @override
@@ -53,7 +49,7 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('Quiz app'),
         ),
-        body: Column(
+        body: _questionIndex < questions.length? Column(
           children: [
             Question(
               questions[_questionIndex]['QuestionText'] as String
@@ -64,7 +60,7 @@ class _MyAppState extends State<MyApp> {
                return Answer(_answerQuestion, answer);
             }).toList()
           ],
-        ),
+        ) : Center(child: Text('You did it!'),),
       ),
     );
   }
